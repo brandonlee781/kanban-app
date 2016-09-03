@@ -1,9 +1,8 @@
 const path = require('path');
 const merge = require('webpack-merge');
 const validate = require('webpack-validator');
-const NPMInstallPlugin = require('npm-install-webpack-plugin');
 
-const parts = require('./libs/parts');
+const parts = require('./libs/parts.js');
 
 const TARGET = process.env.npm_lifecycle_event;
 const ENABLE_POLLING = process.env.ENABLE_POLLING;
@@ -37,10 +36,7 @@ const common = merge(
     },
     resolve: {
       extensions: ['', '.js', '.jsx']
-    },
-    plugins: [
-      new NPMInstallPlugin()
-    ]
+    }
   },
   parts.indexTemplate({
     title: 'Kanban demo',
