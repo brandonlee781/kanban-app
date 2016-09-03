@@ -1,5 +1,4 @@
 import React from 'react';
-
 import classnames from 'classnames';
 
 export default ({editing, value, onEdit, className, ...props}) => {
@@ -21,7 +20,7 @@ class Edit extends React.Component {
     const {className, value, ...props} = this.props;
 
     return <input
-      type='text'
+      type="text"
       className={classnames('edit', className)}
       autoFocus={true}
       defaultValue={value}
@@ -36,6 +35,7 @@ class Edit extends React.Component {
   }
   finishEdit = (e) => {
     const value = e.target.value;
+
     if(this.props.onEdit) {
       this.props.onEdit(value);
     }

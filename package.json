@@ -1,7 +1,7 @@
 {
   "name": "react-boilerplate",
   "private": true,
-  "version": "2.5.6",
+  "version": "0.0.0",
   "description": "Boilerplate for [SurviveJS - React](http://survivejs.com/react/introduction/)",
   "scripts": {
     "stats": "webpack --profile --json > stats.json",
@@ -42,7 +42,7 @@
     "karma-spec-reporter": "0.0.26",
     "karma-webpack": "^1.7.0",
     "mocha": "^2.5.2",
-    "npm-install-webpack-plugin": "^4.0.0",
+    "npm-install-webpack-plugin": "4.0.0",
     "phantomjs-polyfill": "0.0.2",
     "phantomjs-prebuilt": "^2.1.7",
     "react-addons-perf": "^15.1.0",
@@ -54,11 +54,9 @@
     "webpack-validator": "^2.1.1"
   },
   "dependencies": {
-    "alt": "^0.18.5",
-    "alt-container": "^1.0.2",
-    "alt-utils": "^1.0.0",
     "classnames": "^2.2.5",
     "react": "^15.1.0",
-    "react-dom": "^15.1.0"
+    "react-dom": "^15.1.0",
+    "uuid": "^2.0.2"
   }
 }

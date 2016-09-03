@@ -1,12 +1,10 @@
 import React from 'react';
-import uuid from 'uuid';
-
 import Note from './Note';
 import Editable from './Editable';
 
 export default ({
   notes,
-  onNoteClick = () => {}, onEdit= () => {}, onDelete = () =>{}
+  onNoteClick=() => {}, onEdit=() => {}, onDelete=() => {}
 }) => (
   <ul className="notes">{notes.map(({id, editing, task}) =>
     <li key={id}>
@@ -16,7 +14,9 @@ export default ({
           editing={editing}
           value={task}
           onEdit={onEdit.bind(null, id)} />
-        <button className="delete" onClick={onDelete.bind(null, id)}>x</button>
+        <button
+          className="delete"
+          onClick={onDelete.bind(null, id)}>x</button>
       </Note>
     </li>
   )}</ul>
