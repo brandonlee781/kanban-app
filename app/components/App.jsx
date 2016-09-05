@@ -1,49 +1,33 @@
 import React from 'react';
 import uuid from 'uuid';
-import Notes from './Notes';
+import {compose} from 'redux';
+import {DragDropContext} from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 import connect from '../libs/connect';
-import NoteActions from '../actions/NoteActions';
+import Lanes from './Lanes';
+import LaneActions from '../actions/LaneActions';
 
-class App extends React.Component {
-  render() {
-    const {notes} = this.props;
-
-    return (
-      <div>
-        <button className="add-note" onClick={this.addNote}>+</button>
-        <Notes
-          notes={notes}
-          onNoteClick={this.activateNoteEdit}
-          onEdit={this.editNote}
-          onDelete={this.deleteNote}
-          />
-      </div>
-    );
-  }
-  addNote = () => {
-    this.props.NoteActions.create({
+const App = ({LaneActions, lanes}) => {
+  const addLane = () => {
+    LaneActions.create({
       id: uuid.v4(),
-      task: 'New task'
-    })
-  }
-  deleteNote = (id, e) => {
-    // Avoid bubbling to edit
-    e.stopPropagation();
+      name: 'New Lane'
+    });
+  };
 
-    this.props.NoteActions.delete(id);
-  }
-  activateNoteEdit = (id) => {
-    this.props.NoteActions.update({id, editing: true});
-  }
-  editNote = (id, task) => {
-    const {NoteActions} = this.props;
+  return (
+    <div>
+      <button className="add-lane" onClick={addLane}>+</button>
+      <Lanes lanes={lanes} />
+    </div>
+  );
+};
 
-    NoteActions.update({id, task, editing: false})
-  }
-}
-
-export default connect(({notes}) => ({
-  notes
-}), {
-  NoteActions
-})(App)
+export default compose(
+  DragDropContext(HTML5Backend),
+  connect(({lanes}) => ({
+    lanes
+  }), {
+    LaneActions
+  })
+)(App)
